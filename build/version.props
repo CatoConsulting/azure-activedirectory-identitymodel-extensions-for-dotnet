@@ -12,7 +12,7 @@
     <VersionSuffix Condition="'$(MicrosoftIdentityModelVersion)' == ''">$(PreviewVersionSuffix)</VersionSuffix>
     <VersionPrefix Condition="'$(MicrosoftIdentityModelVersion)' == ''">$(MicrosoftIdentityModelCurrentVersion)</VersionPrefix>
     <!-- FileVersion format: major.minor.build.revision where each part must be <= 65534 -->
-    <!-- We use MMdd format for revision which gives us values from 101 (Jan 1) to 1231 (Dec 31), well under 65534 -->
+    <!-- We use MMdd format for revision which gives us values from 0101 (Jan 1) to 1231 (Dec 31), well under 65534 -->
     <FileVersion Condition="'$(MicrosoftIdentityModelVersion)' != '' and '$(IsCustomPreview)' != 'true' ">$(MicrosoftIdentityModelVersion).$([System.DateTime]::Now.ToString("MMdd"))</FileVersion>
     <FileVersion Condition="'$(MicrosoftIdentityModelVersion)' == ''">$(MicrosoftIdentityModelCurrentVersion).$([System.DateTime]::Now.ToString("MMdd"))</FileVersion>
     <!-- AssemblyVersion must be a 4-part version with each part <= 65534. We use major.minor.build.0 -->
