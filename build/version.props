@@ -4,6 +4,8 @@
   <PropertyGroup>
     <MicrosoftIdentityModelCurrentVersion>8.12.1</MicrosoftIdentityModelCurrentVersion>
 
+    <!-- PreviewVersionSuffix is used as a string suffix for informational version (e.g., "-preview-70105213424") -->
+    <!-- It is not parsed as a numeric version, so the YMMddHHmmss format is acceptable here -->
     <PreviewVersionSuffix Condition="'$(PreviewVersionSuffix)' == '' and '$(BuildingInsideVisualStudio)' != 'true'">preview-$([System.DateTime]::Now.AddYears(-2019).Year)$([System.DateTime]::Now.ToString("MMddHHmmss"))</PreviewVersionSuffix>
     <!--VS re-evaluates the variables, so having seconds or minutes creates an infinite loop of package updates-->
     <PreviewVersionSuffix Condition="'$(PreviewVersionSuffix)' == '' and '$(BuildingInsideVisualStudio)' == 'true'">preview-$([System.DateTime]::Now.AddYears(-2019).Year)$([System.DateTime]::Now.ToString("MMddHH"))</PreviewVersionSuffix>
