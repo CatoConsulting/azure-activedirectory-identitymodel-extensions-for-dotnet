@@ -170,9 +170,10 @@ namespace Microsoft.IdentityModel.JsonWebTokens
                             unwrappedKeys.Add(new SymmetricSecurityKey(unwrappedKey));
                         }
                     }
-                    else
-#endif
+                    else if (key.CryptoProviderFactory.IsSupportedAlgorithm(jwtToken.Alg, key))
+#else
                     if (key.CryptoProviderFactory.IsSupportedAlgorithm(jwtToken.Alg, key))
+#endif
                     {
                         var kwp = key.CryptoProviderFactory.CreateKeyWrapProviderForUnwrap(key, jwtToken.Alg);
                         var unwrappedKey = kwp.UnwrapKey(jwtToken.EncryptedKeyBytes);
